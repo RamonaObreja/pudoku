@@ -3,7 +3,7 @@ class Cell(object):
     vertical = 0
     value = []
     maxValue = 0
-    given = False
+    immutable = False
     houses = []
     
     def __init__(self, hor, vert, max):
@@ -11,8 +11,7 @@ class Cell(object):
         self.horizontal = hor
         self.vertical = vert
         self.maxValue = max
-        for i in range(1,max+1):
-            self.value.append(i)
+        self.value = range(1,max+1)
     
     def addHouse(self, house):
         self.houses.append(house)
@@ -23,6 +22,7 @@ class EmptyCell(Cell):
         self.horizontal = hor
         self.vertical = vert
         self.maxValue = -1
+        self.immutable = True
 
 class GivenCell(Cell):
     def __init__(self, hor, vert, max, val):
@@ -30,5 +30,7 @@ class GivenCell(Cell):
         self.horizontal = hor
         self.vertical = vert
         self.maxValue = max
-        self.given = True
+        self.value = []
         self.value.append(val)
+        self.immutable = True
+        
