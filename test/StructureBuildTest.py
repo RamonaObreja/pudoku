@@ -1,6 +1,7 @@
 import structures.Cell
 import structures.House
 import structures.Grid
+import solver.Solver
 
 def tryConstruct():
     maxValue = 9
@@ -18,9 +19,10 @@ def tryConstruct():
         for j in range(0, 9):
             cells.append(structures.Cell.Cell(j,i,maxValue))
     print 'Cells created'
-    #BUG: number of elements in i.value is way too large!
-    #for i in cells:
-    #    print str(i.horizontal)+ " " + str(i.vertical)+ " " + str(i.value)
+    print 'Cell test started'
+    for i in cells:
+        print str(i.horizontal) + " " + str(i.vertical) + " " + str(i.value)
+    print 'Cell test finished'
     
     print 'Starting House Creation'
     #Rows
@@ -43,6 +45,9 @@ def tryConstruct():
     print 'Starting Grid creation'
     grid = structures.Grid.Grid(cells,houses)
     print 'Grid created'
+    print 'Trying to solve'
+    solver.Solver.HiddenSingleSolver.solve(grid)
+    print 'Solving finished'
     print 'Done!'
 
 if __name__ == "__main__":
