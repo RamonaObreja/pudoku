@@ -1,0 +1,1 @@
+Project under the LGPL version 2 (no later)
